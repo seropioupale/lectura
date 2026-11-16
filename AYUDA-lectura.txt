@@ -102,6 +102,11 @@ tono sintético sencillo.
 
 REGISTRO DE CAMBIOS
 -------------------
+v1.1.1 (16-11-2026)
+- Al tocar una nota en cualquier octava se ilumina la tecla pulsada (antes
+  se encendía siempre la de la octava escrita). Si fallas, se ilumina la
+  correcta más cercana a tu dedo.
+
 v1.1 (16-11-2026)
 - Sonido de piano de cola real (las mismas muestras que Quintas).
 - Horizontal más cómodo: respuestas grandes abajo en los ejercicios de

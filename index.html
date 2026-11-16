@@ -567,7 +567,7 @@ body[data-view="play"][data-kind="rhy"] .rot{display:none}
       </div>
       <button class="cta" id="btnAgain">Otra ronda</button>
     </section>
-    <p class="ver">Versión 1.1</p>
+    <p class="ver">Versión 1.1.1</p>
   </div>
 </main>
 <script>
@@ -1457,6 +1457,12 @@ function resolve(good,o){
     if(q.kind==='acc'&&q.show===0) sub+=' El becuadro anula la alteración de la armadura.';
     midis=[midiOf(q.dn,q.acc)];
     kk=keyForMidi(midis[0]); if(midis[0]>=48&&midis[0]<=72) kk=midis[0]-48;
+    if(o.key!==undefined){
+      /* La tecla que se ilumina es la pulsada o, si fallas, la correcta más cercana a ella */
+      var tpc=pcOf(q.dn,q.acc), bd=99;
+      K.forEach(function(k2){ var dd2=Math.abs(k2.i-o.key); if(k2.pc===tpc&&dd2<bd){ bd=dd2; kk=k2.i; } });
+      midis=[48+kk];
+    }
     resetKeys(); light(kk,good?'#5fd39a':'#7fa8ff',nm2);
     if(!good&&o.key!==undefined&&o.key!==kk) K[o.key].g.classList.add('miss');
   }
