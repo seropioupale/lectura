@@ -289,22 +289,39 @@ body[data-view="play"][data-kind="rhy"] .rot{display:none}
 .heatrow button.lgr{box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
 .roots{grid-template-columns:repeat(7,1fr)}
 .notes{font-size:17px}
+.qx{display:none}
 @media (orientation:landscape) and (max-height:540px){
   .staff-wrap{grid-column:1/-1}
   svg#staff{max-height:62vh;width:auto;margin:0 auto}
-  body[data-view="play"] .app{grid-template-rows:auto auto minmax(0,.35fr) 4px minmax(0,1fr);grid-template-areas:"st pr" "st rt" "st fb" "tb tb" "pi pi"}
   body[data-view="play"] .staff-wrap{grid-area:st;min-height:0;display:flex;align-items:center;justify-content:center;background:#f6f1e7}
   body[data-view="play"] svg#staff{height:100%;width:100%;max-height:none}
-  body[data-view="play"] .feedback .sub{-webkit-line-clamp:3}
-  body[data-view="play"][data-kind="rhy"] .app{grid-template-rows:auto auto minmax(0,1fr) 4px;grid-template-areas:"pr rt" "fb rt" ". rt" "tb tb"}
-  body[data-view="play"][data-kind="rhy"] .keys button{min-height:0}
-  body[data-view="play"][data-kind="rhy"] .rsvg{max-height:22vh;width:auto;margin:0 auto}
-  body[data-view="play"] .keys.seven{grid-template-columns:repeat(7,1fr)}
-  body[data-view="play"] .prompt .main{font-size:21px}
+  /* Pregunta grande y salir discreto, lejos de las respuestas */
+  body[data-view="play"] .prompt{position:relative;padding-right:92px}
+  body[data-view="play"] .qx{display:block;position:absolute;top:0;right:0;background:transparent;border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:13px;color:var(--muted)}
+  body[data-view="play"] #btnQuit{display:none}
+  body[data-view="play"] .prompt .main{font-size:25px;line-height:1.1}
+  body[data-view="play"] .prompt .sub{font-size:16.5px;line-height:1.3;margin-top:4px}
+  body[data-view="play"] .feedback .main{font-size:20px}
+  body[data-view="play"] .feedback .sub{font-size:15px;line-height:1.35;-webkit-line-clamp:4}
+  /* Ejercicios de tocar: pentagrama y pregunta arriba, teclado abajo a todo lo ancho */
+  body[data-view="play"][data-choice="0"] .app{grid-template-rows:auto minmax(0,.7fr) 4px minmax(0,1.3fr);grid-template-areas:"st pr" "st fb" "tb tb" "pi pi"}
+  body[data-view="play"][data-choice="0"] .right{display:none}
+  /* Ejercicios de elegir: respuestas grandes abajo, en la zona de los pulgares */
+  body[data-view="play"][data-choice="1"] .app{grid-template-rows:auto minmax(0,1fr) 4px auto;grid-template-areas:"st pr" "st fb" "tb tb" "rt rt"}
+  body[data-view="play"][data-choice="1"] .piano-wrap{display:none}
+  body[data-view="play"][data-choice="1"] .right{align-self:end}
+  body[data-view="play"][data-choice="1"] .keys{gap:8px}
+  body[data-view="play"][data-choice="1"] .keys.seven{grid-template-columns:repeat(7,1fr)}
+  body[data-view="play"][data-kind="chord"] .keys{grid-template-columns:repeat(4,1fr)}
+  body[data-view="play"][data-choice="1"] .keys button{min-height:62px;font-size:22px;border-radius:14px}
+  body[data-view="play"][data-kind="rhy"] .app{grid-template-areas:"pr pr" "fb fb" "tb tb" "rt rt"}
+  body[data-view="play"][data-kind="rhy"] .keys{grid-template-columns:repeat(3,1fr)}
+  body[data-view="play"][data-kind="rhy"] .keys button{min-height:0;padding:5px}
+  body[data-view="play"][data-kind="rhy"] .rsvg{max-height:none;width:100%}
 }
 </style>
 </head>
-<body data-view="setup" data-kind="">
+<body data-view="setup" data-kind="" data-choice="">
 <main class="app">
   <header class="top">
     <h1>Entrenador de <em>lectura</em></h1>
@@ -325,6 +342,7 @@ body[data-view="play"][data-kind="rhy"] .rot{display:none}
   <div class="left">
     <div class="prompt" aria-live="polite">
       <div class="hudline" id="hudLine"></div>
+      <button class="qx" id="btnQuit2" type="button">✕ Salir</button>
       <div class="main" id="pMain"></div>
       <div class="sub" id="pSub"></div>
     </div>
@@ -509,7 +527,7 @@ body[data-view="play"][data-kind="rhy"] .rot{display:none}
           <li>«Tu dominio» es un mapa de todas las notas de las dos claves.</li>
         </ul>
         <p>Todo se guarda en este dispositivo. Usa «Copia de seguridad» para llevar tu progreso a otro. En iPhone, el interruptor de silencio apaga el sonido.</p>
-        <p class="hint">Símbolos musicales de la fuente Noto Music (SIL Open Font License).</p>
+        <p class="hint">Piano: muestras Salamander Grand Piano (Yamaha C5) de Alexander Holm, licencia CC BY 3.0. Símbolos musicales: fuente Noto Music (SIL Open Font License).</p>
       </div>
     </section>
 
@@ -549,7 +567,7 @@ body[data-view="play"][data-kind="rhy"] .rot{display:none}
       </div>
       <button class="cta" id="btnAgain">Otra ronda</button>
     </section>
-    <p class="ver">Versión 1.0</p>
+    <p class="ver">Versión 1.1</p>
   </div>
 </main>
 <script>
@@ -901,6 +919,7 @@ function initAudio(){
       actx=new AC(); master=actx.createGain(); master.gain.value=0.8; master.connect(actx.destination);
       newBus();
     }
+    loadSamples();
     if(actx.state!=='running') actx.resume();
   }catch(e){actx=null}
 }
@@ -920,6 +939,7 @@ function noteM(m,t,dur,vol){
   try{
     t=Math.max(t||0,actx.currentTime); dur=dur||0.7; vol=vol||0.32;
     hush(t-actx.currentTime+dur);
+    if(playSample(m,t,dur,vol)) return;
     var f=440*Math.pow(2,(m-69)/12), g=actx.createGain();
     g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(vol,t+0.008);
     g.gain.exponentialRampToValueAtTime(0.001,t+dur); g.connect(bus);
@@ -928,6 +948,32 @@ function noteM(m,t,dur,vol){
     var o2=actx.createOscillator(); o2.type='sine'; o2.frequency.value=f*2; o2.connect(g2); o2.start(t); o2.stop(t+dur+0.05);
   }catch(e){}
 }
+/* ---------- Muestras de piano: Salamander Grand Piano (Yamaha C5), de Alexander Holm, CC BY 3.0 ---------- */
+var SAMPLES={}, sLoading=false;
+var SAMPLE_NOTES=[['C2',36],['Ds2',39],['Fs2',42],['A2',45],['C3',48],['Ds3',51],['Fs3',54],['A3',57],['C4',60],['Ds4',63],['Fs4',66],['A4',69],['C5',72]];
+function loadSamples(){
+  if(sLoading||!actx||!window.fetch) return; sLoading=true;
+  SAMPLE_NOTES.forEach(function(n){
+    try{
+      fetch('piano/'+n[0]+'.mp3').then(function(r){ if(!r.ok) throw 0; return r.arrayBuffer(); })
+      .then(function(buf){ actx.decodeAudioData(buf,function(b){ SAMPLES[n[1]]=b; },function(){}); })
+      .catch(function(){});
+    }catch(e){}
+  });
+}
+function playSample(m,t,dur,vol){
+  var best=null;
+  for(var k in SAMPLES){ var kn=+k; if(best===null||Math.abs(kn-m)<Math.abs(best-m)) best=kn; }
+  if(best===null||Math.abs(best-m)>12) return false;
+  try{
+    var src=actx.createBufferSource(), g=actx.createGain(), v=Math.min(0.95,vol*2.4), hold=Math.max(0.15,dur);
+    src.buffer=SAMPLES[best]; src.playbackRate.value=Math.pow(2,(m-best)/12);
+    g.gain.setValueAtTime(v,t); g.gain.setValueAtTime(v,t+hold); g.gain.exponentialRampToValueAtTime(0.001,t+hold+0.7);
+    src.connect(g); g.connect(bus); src.start(t); src.stop(t+hold+0.75);
+    return true;
+  }catch(e){ return false; }
+}
+
 function clave(t,acc){
   if(!audioOn()) return;
   try{
@@ -1114,7 +1160,7 @@ function refreshAll(){
 
 /* ---------- Juego ---------- */
 var G=null, nextTimer=0, raf=0, lastView='setup';
-function setView(v){ document.body.setAttribute('data-view',v); if(v!=='play') document.body.setAttribute('data-kind',''); fitPiano(); requestAnimationFrame(fitPiano); }
+function setView(v){ document.body.setAttribute('data-view',v); if(v!=='play'){ document.body.setAttribute('data-kind',''); document.body.setAttribute('data-choice',''); } fitPiano(); requestAnimationFrame(fitPiano); }
 function hudLine(t){
   if(!G) return;
   $('hudLine').textContent=Math.min(G.i+1,G.total)+'/'+G.total+' · '+G.pts.toLocaleString('es-ES')+' pts · racha '+G.streak+(t!==undefined?' · '+t+' s':'')+(MIC.on?' · micrófono':'');
@@ -1310,6 +1356,7 @@ function ask(){
   var again=q.again?'Repaso de un fallo reciente · ':'', mult=1;
   G.q=q; G.locked=false; G.lastSig=sig(q);
   document.body.setAttribute('data-kind',q.kind);
+  document.body.setAttribute('data-choice',TAPK[q.kind]?'0':'1');
   resetKeys(); buildControls(q); hud(); say('','');
   var cn=CLEFS[q.clef].name; cn=cn.charAt(0).toUpperCase()+cn.slice(1);
   if(q.kind==='frag'){ q.pos=0; q.err=0; q.done=q.seq.map(function(){return null}); }
@@ -1514,6 +1561,7 @@ function wire(){
   $('btnStart').addEventListener('click',startRound);
   $('btnAgain').addEventListener('click',startRound);
   $('btnQuit').addEventListener('click',quit);
+  $('btnQuit2').addEventListener('click',quit);
   $('btnSetup').addEventListener('click',quit);
   $('btnHear').addEventListener('click',function(){ if(G&&!G.locked&&G.q.kind==='rhy') withAudio(function(){ playRhythm(G.q.cells); }); });
   $('btnHelp').addEventListener('click',function(){

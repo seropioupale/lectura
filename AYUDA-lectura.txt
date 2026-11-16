@@ -71,8 +71,13 @@ AJUSTES
 
 EN HORIZONTAL
 -------------
-Gira el móvil durante la ronda: el pentagrama y la pregunta quedan arriba
-y el teclado ocupa todo el ancho de abajo.
+Gira el móvil durante la ronda.
+- Ejercicios de tocar: el pentagrama y la pregunta quedan arriba y el
+  teclado ocupa todo el ancho de abajo.
+- Ejercicios de elegir: las respuestas van abajo, en botones grandes, en
+  la zona de los pulgares; el pentagrama queda arriba a la izquierda y la
+  pregunta a la derecha.
+- «✕ Salir» queda arriba a la derecha, lejos de las respuestas.
 
 PUNTOS, MEMORIA Y DOMINIO
 -------------------------
@@ -88,8 +93,20 @@ CRÉDITOS
 --------
 Símbolos musicales: fuente Noto Music, SIL Open Font License 1.1.
 
+CRÉDITOS DEL SONIDO
+-------------------
+Piano: muestras Salamander Grand Piano (Yamaha C5) de Alexander Holm,
+licencia CC BY 3.0. Se descargan la primera vez (algo más de 1 MB) y
+quedan guardadas para usar la app sin conexión. Mientras cargan, suena un
+tono sintético sencillo.
+
 REGISTRO DE CAMBIOS
 -------------------
+v1.1 (16-11-2026)
+- Sonido de piano de cola real (las mismas muestras que Quintas).
+- Horizontal más cómodo: respuestas grandes abajo en los ejercicios de
+  elegir, pregunta más grande y «Salir» apartado arriba.
+
 v1.0 (16-11-2026)
 - Primera versión: pentagrama en clave de sol, de fa y gran pentagrama,
   armaduras, explorador con notas guía, 9 tipos de ejercicio con
