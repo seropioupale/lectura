@@ -1,0 +1,98 @@
+ENTRENADOR DE LECTURA — AYUDA Y REGISTRO DE CAMBIOS
+====================================================
+
+LA IDEA
+-------
+Leer no es adivinar notas sueltas: es ver la nota y que la mano vaya sola
+a su tecla. Por eso aquí respondes tocando el piano, con armaduras de
+verdad, y acabas leyendo fragmentos seguidos.
+
+El método más rápido son las NOTAS GUÍA: unas pocas notas que reconoces
+al instante y desde las que cuentas.
+- Clave de sol: el Sol de la 2.ª línea (la clave lo «abraza») y el Do
+  del 3.er espacio.
+- Clave de fa: el Fa de la 4.ª línea (entre los dos puntos de la clave)
+  y el Do del 2.º espacio.
+- El Do central, con una línea adicional, entre las dos claves.
+
+PARA MEMORIZAR
+--------------
+- Clave de sol, líneas de abajo arriba: Mi, Sol, Si, Re, Fa.
+  Espacios: Fa, La, Do, Mi.
+- Clave de fa, líneas: Sol, Si, Re, Fa, La. Espacios: La, Do, Mi, Sol.
+- Intervalos por la forma: de línea a línea (o de espacio a espacio) hay
+  una 3.ª, 5.ª o 7.ª; de línea a espacio, una 2.ª, 4.ª, 6.ª u 8.ª.
+
+EL EXPLORADOR (pantalla principal, fuera de la ronda)
+-----------------------------------------------------
+- Toca una tecla y verás dónde se escribe esa nota en el gran
+  pentagrama, con su línea o espacio.
+- Elige una tonalidad para ver su armadura y qué notas altera.
+- «Notas guía» marca en dorado las notas de referencia.
+- «Nota al azar» te propone una nota cualquiera.
+- Con el micrófono activado, toca en tu piano real y la nota aparece
+  escrita.
+
+TIPOS DE EJERCICIO
+------------------
+Empiezas con tres:
+- Tocar la nota: ves una nota y la tocas. Vale cualquier octava.
+- ¿Cómo se llama?: ves una nota y eliges su nombre.
+- Fragmentos: de 4 a 8 notas seguidas, de izquierda a derecha. Un
+  tropiezo se perdona; dos, no.
+Cada 15 aciertos se desbloquea uno nuevo, en este orden:
+- Alteraciones: notas con sostenido, bemol o becuadro delante.
+- Con armadura: la armadura altera notas sin escribirlo junto a ellas.
+- Intervalos: eliges el intervalo (2.ª, 3.ª…); al responder ves también
+  su tipo (mayor, menor, justa) y los semitonos.
+- Líneas adicionales: notas por encima o por debajo del pentagrama.
+- Acordes escritos: tríadas, a veces invertidas; eliges su nombre.
+- Ritmo escrito: suena un compás y eliges cuál de los tres ritmos
+  escritos es (necesita sonido).
+Se activan solos y se anuncian al acabar la ronda. En los ajustes,
+«Desbloquear todos ahora» los abre todos.
+
+MICRÓFONO (BETA)
+----------------
+Actívalo en los ajustes y toca en tu piano o teclado real: la app
+reconoce la nota y la usa como respuesta en los ejercicios de tocar.
+Vale cualquier octava. Funciona mejor con notas sueltas, en un sitio
+tranquilo y con el móvil cerca del instrumento. Solo funciona en esta
+versión instalada (no dentro de Claude), después de aceptar el permiso.
+Mientras la app hace sonar algo, deja de escuchar para no confundirse.
+
+AJUSTES
+-------
+- Notación americana (C D E) o europea (Do Re Mi).
+- Claves: sol, fa o las dos.
+- Número de preguntas (5 a 40) y tiempo máximo (5 a 60 s o sin límite).
+  Los fragmentos tienen más tiempo según su longitud.
+- Nombres en las teclas, reintento inmediato, sonido y micrófono.
+
+EN HORIZONTAL
+-------------
+Gira el móvil durante la ronda: el pentagrama y la pregunta quedan arriba
+y el teclado ocupa todo el ancho de abajo.
+
+PUNTOS, MEMORIA Y DOMINIO
+-------------------------
+- Acierto: 100 puntos + hasta 100 por rapidez + 10 por acierto seguido.
+- La app recuerda las notas, intervalos y armaduras que fallas y los
+  pregunta más a menudo.
+- «Tu dominio»: mapa de todas las notas de las dos claves (las de borde
+  claro llevan líneas adicionales). Toca una para verla escrita.
+- Todo se guarda en el dispositivo. «Copia de seguridad» crea un código
+  para llevar el progreso a otro.
+
+CRÉDITOS
+--------
+Símbolos musicales: fuente Noto Music, SIL Open Font License 1.1.
+
+REGISTRO DE CAMBIOS
+-------------------
+v1.0 (16-11-2026)
+- Primera versión: pentagrama en clave de sol, de fa y gran pentagrama,
+  armaduras, explorador con notas guía, 9 tipos de ejercicio con
+  desbloqueo progresivo, mapa de dominio, progreso por días, copia de
+  seguridad, diseño horizontal y micrófono (beta).
+- Versión instalable: icono propio, modo app y uso sin conexión.
