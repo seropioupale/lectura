@@ -102,6 +102,10 @@ tono sintético sencillo.
 
 REGISTRO DE CAMBIOS
 -------------------
+v1.3 (17-11-2026)
+- Micrófono: arreglo para iPhone/iPad (Safari no le pasaba sonido al
+  detector) y más sensible con el piano lejos.
+
 v1.2 (17-11-2026)
 - Diseño para iPad: en vertical, una columna ancha con todo más grande;
   en horizontal, la pregunta arriba y el teclado a todo lo ancho abajo.

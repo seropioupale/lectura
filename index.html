@@ -647,7 +647,7 @@ body[data-view="play"][data-kind="rhy"] .rot{display:none}
       </div>
       <button class="cta" id="btnAgain">Otra ronda</button>
     </section>
-    <p class="ver">Versión 1.2</p>
+    <p class="ver">Versión 1.3</p>
   </div>
 </main>
 <script>
@@ -1091,7 +1091,7 @@ function micStart(){
   try{
     navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}}).then(function(s){
       MIC.stream=s; MIC.src=actx.createMediaStreamSource(s); MIC.an=actx.createAnalyser(); MIC.an.fftSize=2048;
-      MIC.buf=new Float32Array(MIC.an.fftSize); MIC.src.connect(MIC.an); MIC.on=true; MIC.armed=true; MIC.last=-1;
+      MIC.buf=new Float32Array(MIC.an.fftSize); MIC.src.connect(MIC.an); MIC.sink=actx.createGain(); MIC.sink.gain.value=0; MIC.an.connect(MIC.sink); MIC.sink.connect(actx.destination); try{ if(actx.state!=='running') actx.resume(); }catch(e){} MIC.on=true; MIC.armed=true; MIC.last=-1;
       micMsg('Escuchando. Toca una nota en tu piano.');
       cancelAnimationFrame(MIC.raf); MIC.raf=requestAnimationFrame(micLoop);
     },function(){
@@ -1109,7 +1109,7 @@ function detectPitch(b,sr){
   var n=b.length, i, rms=0;
   for(i=0;i<n;i++) rms+=b[i]*b[i];
   rms=Math.sqrt(rms/n);
-  if(rms<0.012) return {rms:rms,f:-1};
+  if(rms<0.005) return {rms:rms,f:-1};
   var minL=Math.floor(sr/1400), maxL=Math.min(Math.floor(sr/55),n>>1), corr=new Float32Array(maxL+2), r0=0;
   for(i=0;i<n;i++) r0+=b[i]*b[i];
   for(var lag=minL;lag<=maxL+1;lag++){ var s=0; for(var j=0;j<n-lag;j++) s+=b[j]*b[j+lag]; corr[lag]=s; }
