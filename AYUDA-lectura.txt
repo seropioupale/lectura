@@ -102,6 +102,11 @@ tono sintético sencillo.
 
 REGISTRO DE CAMBIOS
 -------------------
+v1.2 (17-11-2026)
+- Diseño para iPad: en vertical, una columna ancha con todo más grande;
+  en horizontal, la pregunta arriba y el teclado a todo lo ancho abajo.
+  Textos, botones y teclas a escala de iPad. En el móvil no cambia nada.
+
 v1.1.1 (16-11-2026)
 - Al tocar una nota en cualquier octava se ilumina la tecla pulsada (antes
   se encendía siempre la de la octava escrita). Si fallas, se ilumina la

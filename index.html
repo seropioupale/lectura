@@ -230,7 +230,7 @@ textarea#bkArea{width:100%;min-height:74px;background:var(--ink);color:var(--pap
   body[data-view="play"] .rot{display:block;text-align:center;color:var(--muted);font-size:12.5px;margin:-4px 0 0}
 }
 /* Móvil en horizontal: arriba la franja de pregunta y respuestas; abajo, el teclado a todo lo ancho */
-@media (orientation:landscape) and (max-height:540px){
+@media (orientation:landscape) and (max-height:540px), (pointer:coarse) and (orientation:landscape) and (min-width:900px) and (min-height:600px){
   .app{max-width:none;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:18px;row-gap:10px;align-content:start;
     padding:calc(8px + env(safe-area-inset-top)) calc(12px + env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) calc(12px + env(safe-area-inset-left))}
   .left{display:contents}
@@ -290,7 +290,7 @@ body[data-view="play"][data-kind="rhy"] .rot{display:none}
 .roots{grid-template-columns:repeat(7,1fr)}
 .notes{font-size:17px}
 .qx{display:none}
-@media (orientation:landscape) and (max-height:540px){
+@media (orientation:landscape) and (max-height:540px), (pointer:coarse) and (orientation:landscape) and (min-width:900px) and (min-height:600px){
   .staff-wrap{grid-column:1/-1}
   svg#staff{max-height:62vh;width:auto;margin:0 auto}
   body[data-view="play"] .staff-wrap{grid-area:st;min-height:0;display:flex;align-items:center;justify-content:center;background:#f6f1e7}
@@ -318,6 +318,86 @@ body[data-view="play"][data-kind="rhy"] .rot{display:none}
   body[data-view="play"][data-kind="rhy"] .keys{grid-template-columns:repeat(3,1fr)}
   body[data-view="play"][data-kind="rhy"] .keys button{min-height:0;padding:5px}
   body[data-view="play"][data-kind="rhy"] .rsvg{max-height:none;width:100%}
+}
+/* ---------- iPad y tabletas: todo más grande ---------- */
+@media (pointer:coarse) and (min-width:700px) and (min-height:600px){
+  body{font-size:18px}
+  h1{font-size:40px}
+  .best{font-size:15px}
+  .fs{font-size:15px;padding:10px 14px}
+  .hud{gap:12px}
+  .hud div{padding:10px 10px;border-radius:14px}
+  .hud span{font-size:13px}
+  .hud b{font-size:27px}
+  .keys{gap:12px}
+  .keys button{min-height:74px;font-size:23px;border-radius:16px}
+  .cta{font-size:25px;padding:20px 22px;border-radius:20px}
+  .ghost{font-size:16px;padding:12px 16px;border-radius:14px}
+  .card{padding:20px;gap:18px;border-radius:22px}
+  .card h2{font-size:22px}
+  .field > label,.field > .lab{font-size:17.5px}
+  .field small{font-size:14.5px}
+  .seg{padding:4px;border-radius:14px}
+  .seg button{padding:11px 15px;font-size:16px;border-radius:11px}
+  .multi{gap:8px}
+  .multi button{padding:11px 17px;font-size:16px}
+  .stepper button{width:50px;height:46px;font-size:24px}
+  .stepper output{font-size:23px;min-width:66px}
+  .switch{width:60px;height:36px}
+  .switch i::after{width:28px;height:28px}
+  .switch input:checked + i::after{transform:translateX(24px)}
+  .hint{font-size:15.5px}
+  .chip{font-size:15px;padding:7px 13px}
+  .mini b{font-size:27px}
+  .stats b{font-size:32px}
+  .verdict{font-size:30px}
+  #help p,#help li{font-size:17.5px}
+  #help h2{font-size:22px}
+  textarea#bkArea{font-size:15px}
+  .ver{font-size:14px}
+}
+@media (pointer:coarse) and (min-width:700px) and (min-height:600px){
+  .prompt .main{font-size:36px}
+  .prompt .sub{font-size:21px}
+  .feedback{min-height:84px}
+  .feedback .main{font-size:25px}
+  .feedback .sub{font-size:18px}
+  .notes{font-size:26px}
+  .formula{font-size:16px}
+  .roots{gap:8px}
+  .roots button{padding:13px 0;font-size:18px;border-radius:12px}
+  .piano-wrap{padding:14px 12px 12px;border-radius:22px}
+  .tbar{height:8px}
+  .rot{display:none !important}
+}
+/* iPad en vertical: una columna ancha con el piano grande */
+@media (pointer:coarse) and (orientation:portrait) and (min-width:700px){
+  .app{max-width:860px;gap:18px;padding:calc(24px + env(safe-area-inset-top)) 28px calc(36px + env(safe-area-inset-bottom))}
+  .piano-wrap{margin:0}
+  body[data-view="play"] .app{gap:16px}
+}
+/* iPad en horizontal: pregunta arriba y teclado a todo lo ancho abajo, a escala de iPad */
+@media (pointer:coarse) and (orientation:landscape) and (min-width:900px) and (min-height:600px){
+  .app{padding:calc(18px + env(safe-area-inset-top)) calc(28px + env(safe-area-inset-right)) calc(18px + env(safe-area-inset-bottom)) calc(28px + env(safe-area-inset-left));column-gap:32px;row-gap:16px}
+  h1{font-size:34px}
+  body[data-view="play"] .app{row-gap:12px}
+  body[data-view="play"] .hudline{font-size:17px}
+  body[data-view="play"] .prompt .main{font-size:38px}
+  body[data-view="play"] .prompt .sub{font-size:22px;margin-top:6px}
+  body[data-view="play"] .feedback .main{font-size:27px}
+  body[data-view="play"] .feedback .sub{font-size:19px;-webkit-line-clamp:4}
+  body[data-view="play"] .tbar{height:7px}
+  body[data-view="play"] .keys{gap:10px}
+  body[data-view="play"] .keys button{min-height:66px;font-size:23px;border-radius:15px}
+  body[data-view="play"] #play .row-btns .ghost{padding:11px 16px;font-size:16px}
+  body[data-view="play"] .piano-wrap{padding:10px;border-radius:20px}
+  body[data-view="play"] .qx{font-size:16px;padding:10px 14px}
+  body[data-view="play"] .prompt{padding-right:120px}
+  body[data-view="play"][data-choice="1"] .keys button{min-height:96px;font-size:30px;border-radius:18px}
+  body[data-view="play"] #play .row-btns{justify-content:flex-end}
+  body[data-view="play"] #play .row-btns .ghost{flex:0 0 auto;min-width:180px}
+  body[data-view="play"] .staff-wrap ~ .piano-wrap{}
+  body[data-view="play"][data-choice] .app{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
 }
 </style>
 </head>
@@ -567,7 +647,7 @@ body[data-view="play"][data-kind="rhy"] .rot{display:none}
       </div>
       <button class="cta" id="btnAgain">Otra ronda</button>
     </section>
-    <p class="ver">Versión 1.1.1</p>
+    <p class="ver">Versión 1.2</p>
   </div>
 </main>
 <script>
@@ -883,11 +963,13 @@ function setWH(n){
     else{ k.rect.setAttribute('height',WH-2); k.dot.setAttribute('cy',WH-46); k.tx.setAttribute('y',WH-14); }
   });
 }
-var LANDQ='(orientation:landscape) and (max-height:540px)';
+var LANDQ='(orientation:landscape) and (max-height:540px), (pointer:coarse) and (orientation:landscape) and (min-width:900px) and (min-height:600px)';
 function isLand(){ try{ return window.matchMedia(LANDQ).matches; }catch(e){ return false; } }
 function fitPiano(){
   var n=190;
-  if(isLand()&&document.body.getAttribute('data-view')==='play'){
+  var tabP=false; try{ tabP=window.matchMedia('(pointer:coarse) and (orientation:portrait) and (min-width:700px)').matches; }catch(e){}
+  if(tabP&&document.body.getAttribute('data-view')==='play') n=250;
+  else if(isLand()&&document.body.getAttribute('data-view')==='play'){
     var r=svg.parentNode.getBoundingClientRect(), w=r.width-12, h=r.height-12;
     if(w>60&&h>60) n=Math.max(84,Math.min(420,600*h/w));
   }
